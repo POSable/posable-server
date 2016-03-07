@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
+//Setup Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -37,12 +39,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // passport config
-var Account = require('./models/account');
+var User = require('./models/user');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// mongoose
+// mongoose/mongodb
 mongoose.connect('mongodb://localhost/posable-passport-dev');
 
 // catch 404 and forward to error handler

@@ -1,6 +1,6 @@
 var express = require('express');
 var passport = require('passport');
-var Account = require('../models/account');
+var User = require('../models/user');
 var router = express.Router();
 
 
@@ -13,9 +13,9 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-  Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+  User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
     if (err) {
-      return res.render('register', { account : account });
+      return res.render('register', { user : user });
     }
 
     passport.authenticate('local')(req, res, function () {
