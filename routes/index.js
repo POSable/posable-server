@@ -38,6 +38,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/ping', function(req, res){
+  console.log("Ping Pong");
   res.status(200).send("pong!");
 });
 
